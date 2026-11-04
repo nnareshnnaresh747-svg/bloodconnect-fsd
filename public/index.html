@@ -1,0 +1,551 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Blood Connect | Save Lives</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* PAGE NAVIGATION */
+
+       /* Page navigation */
+.page {
+    display: none;
+    min-height: 80vh;
+}
+
+/* Show login page by default */
+#login.page {
+    display: block;
+}
+
+/* Show active pages */
+.page.active {
+    display: block;
+}
+
+        .hidden {
+            display: none !important;
+        }
+
+        .auth-links {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .auth-links a {
+            color: #c62828;
+            font-weight: bold;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .dashboard-card {
+            padding: 20px;
+            margin: 20px 0;
+            background: white;
+            border-radius: 10px;
+        }
+
+        .donor-card,
+        .request-card {
+            background: white;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+        }
+
+        .page-container {
+            max-width: 1100px;
+            margin: auto;
+            padding: 30px 20px;
+        }
+
+        .auth-page {
+            max-width: 500px;
+            margin: 50px auto;
+            padding: 30px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .auth-page h1,
+        .auth-page h2 {
+            text-align: center;
+            color: #c62828;
+            margin-bottom: 25px;
+        }
+
+        .auth-page form input,
+        .auth-page form select,
+        .search-container input,
+        .search-container select {
+            width: 100%;
+            padding: 14px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-sizing: border-box;
+        }
+
+        .auth-page form button {
+            width: 100%;
+            margin-top: 15px;
+        }
+
+        .dashboard-section {
+            margin: 30px 0;
+        }
+
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .nav-links button {
+            cursor: pointer;
+        }
+    </style>
+
+</head>
+
+<body>
+
+<!-- ================================= -->
+<!-- HEADER -->
+<!-- ================================= -->
+
+<header>
+
+    <nav class="navbar">
+
+        <h2 class="logo">🩸 Blood Connect</h2>
+
+        <div class="nav-links">
+
+            <a href="#login">Login</a>
+
+            <a href="#register">Register</a>
+
+        </div>
+
+    </nav>
+
+</header>
+
+
+<!-- ================================= -->
+<!-- LOGIN PAGE -->
+<!-- ================================= -->
+
+<main>
+
+<section id="login" class="page auth-page">
+
+    <h1>Welcome to Blood Connect 🩸</h1>
+
+    <p style="text-align:center;">
+        Login to connect with blood donors and save lives.
+    </p>
+
+    <h2>Login</h2>
+
+    <form id="loginForm">
+
+        <input
+            type="email"
+            id="loginEmail"
+            placeholder="Email Address"
+            required
+        >
+
+        <input
+            type="password"
+            id="loginPassword"
+            placeholder="Password"
+            required
+        >
+
+        <button type="submit" class="btn">
+            Login
+        </button>
+
+    </form>
+
+    <div class="auth-links">
+
+        <p>
+            Don't have an account?
+
+            <a href="#register">
+                Register here
+            </a>
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- ================================= -->
+<!-- REGISTRATION PAGE -->
+<!-- ================================= -->
+
+<section id="register" class="page auth-page">
+
+    <h1>Create Your Account</h1>
+
+    <p style="text-align:center;">
+        Join Blood Connect and help save lives.
+    </p>
+
+    <form id="registerForm">
+
+        <input
+            type="text"
+            id="regName"
+            placeholder="Full Name"
+            required
+        >
+
+        <input
+            type="email"
+            id="regEmail"
+            placeholder="Email Address"
+            required
+        >
+
+        <input
+            type="password"
+            id="regPassword"
+            placeholder="Password (minimum 8 characters)"
+            required
+            minlength="8"
+        >
+
+        <input
+            type="tel"
+            id="regPhone"
+            placeholder="10 Digit Phone Number"
+            required
+            pattern="[0-9]{10}"
+        >
+
+        <select id="regBlood" required>
+
+            <option value="">Select Blood Group</option>
+
+            <option value="A+">A+</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B-">B-</option>
+            <option value="AB+">AB+</option>
+            <option value="AB-">AB-</option>
+            <option value="O+">O+</option>
+            <option value="O-">O-</option>
+
+        </select>
+
+        <input
+            type="text"
+            id="regCity"
+            placeholder="City"
+            required
+        >
+
+        <select id="regRole" required>
+
+            <option value="donor">Blood Donor</option>
+
+            <option value="recipient">Blood Recipient</option>
+
+        </select>
+
+        <button type="submit" class="btn">
+            Register
+        </button>
+
+    </form>
+
+    <div class="auth-links">
+
+        <p>
+            Already have an account?
+
+            <a href="#login">
+                Login here
+            </a>
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- ================================= -->
+<!-- DASHBOARD PAGE -->
+<!-- ================================= -->
+
+<section id="dashboard" class="page">
+
+    <!-- DASHBOARD NAVIGATION -->
+
+    <div class="page-container">
+
+        <div class="dashboard-header">
+
+            <h1>🩸 Blood Connect Dashboard</h1>
+
+            <button
+                onclick="logout()"
+                class="btn"
+                id="logoutBtn"
+            >
+                Logout
+            </button>
+
+        </div>
+
+        <hr>
+
+        <!-- USER INFORMATION -->
+
+        <div class="dashboard-card">
+
+            <h2>Welcome!</h2>
+
+            <h3>
+                Hello, <span id="userName">User</span>
+            </h3>
+
+            <p>
+                Welcome to your Blood Connect account.
+                Help save lives by connecting with people in need.
+            </p>
+
+        </div>
+
+
+        <!-- DASHBOARD STATS -->
+
+        <section class="stats">
+
+            <div>
+                <h2>8</h2>
+                <p>Blood Groups</p>
+            </div>
+
+            <div>
+                <h2>24/7</h2>
+                <p>Request Access</p>
+            </div>
+
+            <div>
+                <h2>1 Life</h2>
+                <p>Can Be Saved</p>
+            </div>
+
+        </section>
+
+
+        <!-- ABOUT -->
+
+        <section class="dashboard-section">
+
+            <h2>About Blood Connect</h2>
+
+            <p>
+                Blood Connect is an emergency blood donor platform
+                designed to connect blood donors and recipients.
+                Users can register, search for compatible donors
+                and send emergency blood requests.
+            </p>
+
+        </section>
+
+
+        <!-- SEARCH DONORS -->
+
+        <section class="dashboard-section" id="search">
+
+            <h2>Find Blood Donors</h2>
+
+            <p>
+                Search for available donors in your city.
+            </p>
+
+            <div class="search-container">
+
+                <select id="searchBlood">
+
+                    <option value="">Select Blood Group</option>
+
+                    <option value="A+">A+</option>
+                    <option value="A-">A-</option>
+                    <option value="B+">B+</option>
+                    <option value="B-">B-</option>
+                    <option value="AB+">AB+</option>
+                    <option value="AB-">AB-</option>
+                    <option value="O+">O+</option>
+                    <option value="O-">O-</option>
+
+                </select>
+
+                <input
+                    type="text"
+                    id="searchCity"
+                    placeholder="Enter City"
+                >
+
+                <button
+                    onclick="searchDonors()"
+                    class="btn"
+                >
+                    Search Donors
+                </button>
+
+            </div>
+
+            <div
+                id="donorResults"
+                class="donor-grid"
+            ></div>
+
+        </section>
+
+
+        <!-- DONOR AVAILABILITY -->
+
+        <section class="dashboard-section">
+
+            <div id="availabilityArea">
+
+                <h2>Donor Availability</h2>
+
+                <p>
+                    Update your current availability status.
+                </p>
+
+                <select id="availability">
+
+                    <option value="true">Available</option>
+
+                    <option value="false">Unavailable</option>
+
+                </select>
+
+                <button
+                    onclick="updateAvailability()"
+                    class="btn"
+                >
+                    Update Availability
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- INCOMING REQUESTS -->
+
+        <section class="dashboard-section" id="incomingArea">
+
+            <h2>Incoming Blood Requests</h2>
+
+            <div id="incomingRequests">
+
+                No incoming requests.
+
+            </div>
+
+        </section>
+
+
+        <!-- OUTGOING REQUESTS -->
+
+        <section class="dashboard-section" id="outgoingArea">
+
+            <h2>My Blood Requests</h2>
+
+            <div id="outgoingRequests">
+
+                No outgoing requests.
+
+            </div>
+
+        </section>
+
+
+        <!-- CONTACT -->
+
+        <section class="dashboard-section">
+
+            <h2>Contact Us</h2>
+
+            <p>Email: support@bloodconnect.example</p>
+
+            <p>Blood Connect – Every Drop Counts.</p>
+
+        </section>
+
+    </div>
+
+</section>
+
+</main>
+
+
+<!-- ================================= -->
+<!-- FOOTER -->
+<!-- ================================= -->
+
+<footer>
+
+    <p style="text-align:center; padding:20px;">
+
+        © 2026 Blood Connect. All Rights Reserved.
+
+    </p>
+
+</footer>
+
+
+<!-- ================================= -->
+<!-- JAVASCRIPT -->
+<!-- ================================= -->
+
+<script src="app.js" defer></script>
+
+</body>
+
+</html>
